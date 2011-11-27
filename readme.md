@@ -4,7 +4,7 @@ A work-in-progress API to Modern Warfare 3's leaderboards.
 
 ## Requirements
 
- - [pyqyery]
+ - [pyquery]
  - [Python 2.7]
  - [Requests]
 
