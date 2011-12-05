@@ -83,6 +83,7 @@ if __name__ == '__main__':
     password = raw_input('Password: ')
 
     login_cookie = get_login_cookie(email, password)
+
     domination_leaderboard = get_domination_leaderboard(login_cookie)
     entries = get_domination_leaderboard_entries(domination_leaderboard)
 
