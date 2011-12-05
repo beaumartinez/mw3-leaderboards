@@ -1,3 +1,5 @@
+import json
+
 import pyquery
 import requests
 
@@ -74,9 +76,8 @@ class DominationLeaderboardEntry(object):
         self.kills = kills
         self.games_played = games_played
 
-    def __str__(self):
-        return '{}: {} ({}, {})'.format(self.rank, self.name, self.score,
-            self.time_played)
+    def to_json(self):
+        return json.dumps(self.__dict__)
 
 if __name__ == '__main__':
     email = raw_input('Email: ')
@@ -88,4 +89,4 @@ if __name__ == '__main__':
     entries = get_domination_leaderboard_entries(domination_leaderboard)
 
     for entry in entries:
-        print entry
+        print entry.to_json()
