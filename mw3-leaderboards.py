@@ -14,16 +14,18 @@ def get_login_cookie(email, password):
 
     return request.cookies
 
-def get_domination_leaderboard(login_cookie):
-    request = requests.get('https://elite.callofduty.com/leaderboards/mw3/regular/domination/alltime',
-        cookies=login_cookie)
+def get_domination_leaderboard(login_cookie, page=1):
+    request = requests.get('https://elite.callofduty.com/leaderboards/mw3/regular/domination/alltime?page={}'.format(page), cookies=login_cookie)
 
     return request.content
 
 def get_domination_leaderboard_entries(domination_leaderboard):
+    '''Return a tuple (page_count, entries).'''
     entries = list()
 
     document = pyquery.PyQuery(domination_leaderboard)
+
+    # Get the leaderboard entries
 
     table_rows = document('#beachhead tr')
 
@@ -31,15 +33,22 @@ def get_domination_leaderboard_entries(domination_leaderboard):
     entry_elements = table_rows[1:]
 
     for entry_element in entry_elements:
-        entry = _get_domination_leaderboard_entry_from_element(entry_element)
+        entry = _parse_domination_leaderboard_entry(entry_element)
         
         entries.append(entry)
 
     entries = tuple(entries)
 
-    return entries
+    # Get the page count
 
-def _get_domination_leaderboard_entry_from_element(element):
+    page_count_element = document('input[name=ajax_pagination_total]')
+
+    page_count = page_count_element.attr('value')
+    page_count = int(page_count)
+
+    return page_count, entries
+
+def _parse_domination_leaderboard_entry(element):
     rank_element = element[0]
     name_element = element[1]
     score_element = element[2]
@@ -86,7 +95,7 @@ if __name__ == '__main__':
     login_cookie = get_login_cookie(email, password)
 
     domination_leaderboard = get_domination_leaderboard(login_cookie)
-    entries = get_domination_leaderboard_entries(domination_leaderboard)
+    page_count, entries = get_domination_leaderboard_entries(domination_leaderboard)
 
     for entry in entries:
         print entry.to_json()
