@@ -109,4 +109,3 @@ def _parse_time(time):
     seconds += (weeks * 60480)
 
     return seconds
-
