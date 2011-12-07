@@ -22,9 +22,7 @@ class Api(object):
         request = requests.post(
             'https://profile.callofduty.com/p/process_login', data=credentials)
 
-        login_cookie = request.cookies
-        
-        self._login_cookie = login_cookie
+        self._login_cookie = request.cookies
 
     def get_domination_leaderboard(self, page=1):
         request = requests.get('https://elite.callofduty.com/leaderboards/mw3/'
