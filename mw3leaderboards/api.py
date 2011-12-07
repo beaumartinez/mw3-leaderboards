@@ -19,15 +19,17 @@ class Api(object):
             'j_password': self.password,
         }
 
-        request = requests.post('https://profile.callofduty.com/p/process_login',
-            data=credentials)
+        request = requests.post(
+            'https://profile.callofduty.com/p/process_login', data=credentials)
 
         login_cookie = request.cookies
         
         self._login_cookie = login_cookie
 
     def get_domination_leaderboard(self, page=1):
-        request = requests.get('https://elite.callofduty.com/leaderboards/mw3/regular/domination/alltime?page={}'.format(page), cookies=self._login_cookie)
+        request = requests.get('https://elite.callofduty.com/leaderboards/mw3/'
+            'regular/domination/alltime?page={}'.format(page),
+            cookies=self._login_cookie)
 
         document = pyquery.PyQuery(request.content)
 
