@@ -1,6 +1,6 @@
 import re
 
-import api
+import models
 
 def _parse_domination_leaderboard_entry(element):
     rank_element = element[0]
@@ -38,8 +38,8 @@ def _parse_domination_leaderboard_entry(element):
     games_played = games_played.replace(',', '')
     games_played = int(games_played)
 
-    entry = api.DominationLeaderboardEntry(rank, name, score, captures, defends,
-        kills, games_played)
+    entry = models.DominationLeaderboardEntry(rank, name, score, captures,
+        defends, kills, games_played)
 
     return entry
 
