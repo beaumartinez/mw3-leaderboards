@@ -22,6 +22,8 @@ def _parse_domination_leaderboard_entry(element):
     rank = rank.replace(',', '')
     rank = int(rank)
 
+    name = name.strip()
+
     score = _parse_score(score)
 
     captures = captures.replace(',', '')
