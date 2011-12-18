@@ -60,12 +60,11 @@ class Api(object):
 
 class DominationLeaderboardEntry(object):
 
-    def __init__(self, rank, name, score, time_played, captures, defends, kills,
+    def __init__(self, rank, name, score, captures, defends, kills,
             games_played):
         self.rank = rank
         self.name = name
         self.score = score
-        self.time_played = time_played
         self.captures = captures
         self.defends = defends
         self.kills = kills
