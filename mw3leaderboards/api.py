@@ -58,6 +58,24 @@ class Api(object):
 
         return leaderboard
 
+    def get_player_url(self, player):
+        SEARCH_URL = 'https://elite.callofduty.com/search'
+
+        arguments = {
+            'name': player,
+        }
+
+        request = requests.post(SEARCH_URL, data=arguments,
+            cookies=self._login_cookie, allow_redirects=True)
+
+        player_url = request.url
+
+        # Elite redirects to the search URL if there isn't a match
+        if player_url == SEARCH_URL:
+            player_url = None
+
+        return player_url
+
 class DominationLeaderboardEntry(object):
 
     def __init__(self, rank, name, score, captures, defends, kills,
