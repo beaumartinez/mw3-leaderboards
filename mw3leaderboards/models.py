@@ -1,6 +1,11 @@
 import json
 
-class DominationLeaderboardEntry(object):
+class LeaderboardEntry(object):
+
+    def to_json(self):
+        return json.dumps(self.__dict__)
+
+class DominationLeaderboardEntry(LeaderboardEntry):
 
     def __init__(self, rank, name, score, captures, defends, kills,
             games_played):
@@ -11,9 +16,6 @@ class DominationLeaderboardEntry(object):
         self.defends = defends
         self.kills = kills
         self.games_played = games_played
-
-    def to_json(self):
-        return json.dumps(self.__dict__)
 
 class Leaderboard(object):
 
