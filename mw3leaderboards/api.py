@@ -18,8 +18,8 @@ class Api(object):
             'j_password': self.password,
         }
 
-        request = requests.post(
-            'https://profile.callofduty.com/p/process_login', data=credentials)
+        request = requests.post('https://profile.callofduty.com/p/'
+            'process_login', data=credentials)
 
         self._login_cookie = request.cookies
 
