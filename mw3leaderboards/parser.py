@@ -51,8 +51,8 @@ def _parse_score(score):
         score = score.group(1)
 
         score = float(score)
-        score *= 1000000
+        score *= 1000000.0
 
-        score = int(score)
+        score = int(round(score))
 
     return score
