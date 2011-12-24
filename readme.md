@@ -14,12 +14,12 @@ A work-in-progress API to Modern Warfare 3's leaderboards.
 
 ## Usage
 
-0. [Sign up for an Elite account][elite]
-1. Create an API object with your Elite account's login:
+1. [Sign up for an Elite account][elite]
+2. Create an API object with your Elite account's login:
 
         api = mw3leaderboards.Api(email, password)
 
-2. Call some methods:
+3. Call some methods:
 
         for entry in api.get_domination_leaderboard():
             print entry
