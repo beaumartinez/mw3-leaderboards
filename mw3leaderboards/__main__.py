@@ -1,7 +1,16 @@
+import sys
+
 import api
 
-email = raw_input('Email: ')
-password = raw_input('Password: ')
+try:
+    email = sys.argv[1]
+except IndexError:
+    email = raw_input('Email: ')
+
+try:
+    password = sys.argv[2]
+except IndexError:
+    password = raw_input('Password: ')
 
 api = api.Api(email, password)
 
