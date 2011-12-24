@@ -27,6 +27,8 @@ class Api(object):
             'regular/domination/alltime?page={}'.format(page),
             cookies=self._login_cookie)
 
+        # TODO: Abstract this kind of parsing
+
         document = pyquery.PyQuery(request.content)
 
         # Get the leaderboard entries
