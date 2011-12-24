@@ -22,3 +22,6 @@ class Leaderboard(object):
     def __init__(self, entries, page_count):
         self.entries = entries
         self.page_count = page_count
+
+    def __iter__(self):
+        return iter(self.entries)
