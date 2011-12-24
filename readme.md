@@ -21,9 +21,7 @@ A work-in-progress API to Modern Warfare 3's leaderboards.
 
 2. Call some methods:
 
-        domination_leaderboard = api.get_domination_leaderboard()
-
-        for entry in domination_leaderboard.entries:
+        for entry in api.get_domination_leaderboard():
             print entry.to_json()
 
 [elite]: https://elite.callofduty.com/account/create
