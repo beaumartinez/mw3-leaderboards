@@ -1,7 +1,6 @@
 import pyquery
 import requests
 
-import parser
 import models
 
 class Api(object):
@@ -40,7 +39,8 @@ class Api(object):
         entry_elements = table_rows[1:]
 
         for entry_element in entry_elements:
-            entry = parser._parse_domination_leaderboard_entry(entry_element)
+            entry = models.DominationLeaderboardEntry.from_element(
+                entry_element)
             
             entries.append(entry)
 
