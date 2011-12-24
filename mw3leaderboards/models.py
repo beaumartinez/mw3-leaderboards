@@ -5,6 +5,9 @@ class LeaderboardEntry(object):
     def to_json(self):
         return json.dumps(self.__dict__)
 
+    def __str__(self):
+        return self.to_json()
+
 class DominationLeaderboardEntry(LeaderboardEntry):
 
     def __init__(self, rank, name, score, captures, defends, kills,
