@@ -15,7 +15,7 @@ A work-in-progress API to Modern Warfare 3's leaderboards.
 ## Usage
 
 0. [Sign up for an Elite account][elite]
-1. Create an API object with your Elite account's credentials:
+1. Create an API object with your Elite account's login:
 
         api = mw3leaderboards.Api(email, password)
 
