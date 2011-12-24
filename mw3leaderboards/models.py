@@ -35,7 +35,7 @@ class DominationLeaderboardEntry(LeaderboardEntry):
 
         score_element = element[2]
         score = score_element.text_content()
-        score = parser._parse_score(score)
+        score = parser.parse_score(score)
 
         captures_element = element[5]
         captures = captures_element.text_content()

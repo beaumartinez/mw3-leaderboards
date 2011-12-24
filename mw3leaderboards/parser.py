@@ -1,6 +1,6 @@
 import re
 
-def _parse_score(score):
+def parse_score(score):
     score = score.replace(',', '')
 
     try:
