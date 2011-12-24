@@ -5,7 +5,5 @@ password = raw_input('Password: ')
 
 api = api.Api(email, password)
 
-domination_leaderboard = api.get_domination_leaderboard()
-
-for entry in domination_leaderboard:
+for entry in api.get_domination_leaderboard():
     print entry.to_json()
