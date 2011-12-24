@@ -26,8 +26,7 @@ class DominationLeaderboardEntry(LeaderboardEntry):
     def from_element(cls, element):
         rank_element = element[0]
         rank = rank_element.text_content()
-        rank = rank.replace(',', '')
-        rank = int(rank)
+        rank = parser.parse_formatted_number(rank)
 
         name_element = element[1]
         name = name_element.text_content()
@@ -39,23 +38,19 @@ class DominationLeaderboardEntry(LeaderboardEntry):
 
         captures_element = element[5]
         captures = captures_element.text_content()
-        captures = captures.replace(',', '')
-        captures = int(captures)
+        captures = parser.parse_formatted_number(captures)
 
         defends_element = element[6]
         defends = defends_element.text_content()
-        defends = defends.replace(',', '')
-        defends = int(defends)
+        defends = parser.parse_formatted_number(defends)
 
         kills_element = element[7]
         kills = kills_element.text_content()
-        kills = kills.replace(',', '')
-        kills = int(kills)
+        kills = parser.parse_formatted_number(kills)
 
         games_played_element = element[8]
         games_played = games_played_element.text_content()
-        games_played = games_played.replace(',', '')
-        games_played = int(games_played)
+        games_played = parser.parse_formatted_number(games_played)
 
         entry = cls(rank, name, score, captures, defends, kills, games_played)
 
