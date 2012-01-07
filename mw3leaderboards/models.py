@@ -5,7 +5,7 @@ import parser
 class LeaderboardEntry(object):
 
     def to_json(self):
-        return json.dumps(self.__dict__)
+        return json.dumps(self.__dict__, sort_keys=True)
 
     def __str__(self):
         return self.to_json()
