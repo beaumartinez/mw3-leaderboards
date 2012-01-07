@@ -1,3 +1,5 @@
+import urlparse
+
 import pyquery
 import requests
 
@@ -75,4 +77,20 @@ class Api(object):
         if player_url == SEARCH_URL:
             player_url = None
 
-        return player_url
+        # Get the player_id
+
+        try:
+            split_player_url = urlparse.urlsplit(player_url)
+        except AttributeError:
+            player_id = None
+        else:
+            path = split_player_url.path
+            path = path.split('/')
+
+            # Remove the first "/"  
+            path = path[1:]
+
+            player_id = path[1:]
+            player_id = '/'.join(player_id)
+
+        return player_id, player_url
